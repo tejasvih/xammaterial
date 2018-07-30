@@ -7,6 +7,7 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Support.V7.App;
 using Android.Views;
+using Java.Lang;
 
 namespace xammaterial
 {
@@ -71,6 +72,10 @@ namespace xammaterial
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
+            
+            
+            FragmentTransaction transaction = this.FragmentManager.BeginTransaction();
+
             int id = item.ItemId;
 
             if (id == Resource.Id.nav_camera)
@@ -91,15 +96,24 @@ namespace xammaterial
             }
             else if (id == Resource.Id.nav_share)
             {
-
+                
             }
             else if (id == Resource.Id.nav_send)
             {
-
+                Fragment fragment = null;
+                fragment = new Fragment1();
+                transaction.Replace(Resource.Id.main_content, fragment).AddToBackStack(null).Commit();
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             drawer.CloseDrawer(GravityCompat.Start);
+
+            // Let's put the new fragment into the FrameLayout
+            // If you use the support action bar, use getSupportFragmentManager(), else getFragmentManager()
+            
+            
+            
+
             return true;
         }
     }
