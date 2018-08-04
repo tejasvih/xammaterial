@@ -102,7 +102,9 @@ namespace xammaterial
             {
                 Fragment fragment = null;
                 fragment = new Fragment1();
-                transaction.Replace(Resource.Id.main_content, fragment).AddToBackStack(null).Commit();
+                //transaction.Replace(Resource.Id.fragment_layout1, fragment).AddToBackStack(null).Commit();
+                transaction.Replace(Resource.Id.fragment_logo1, fragment).AddToBackStack(null).Commit();
+                
             }
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
